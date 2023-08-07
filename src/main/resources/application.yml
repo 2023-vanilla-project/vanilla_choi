@@ -1,0 +1,19 @@
+# DB config
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vanila_sns
+    username: root
+    password: lhj7057
+
+  # JPA config
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8004
