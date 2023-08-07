@@ -1,13 +1,21 @@
-package com.example.vanilla.dto;
+package com.example.vanilla.embeddable;
 
-public class FollowingDTO {
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import java.io.Serializable;
 
+@Embeddable
+public class FollowingId implements Serializable {
+
+    @Column(name = "user_id")
     private String userId;
+
+    @Column(name = "following_id")
     private String followingId;
 
     @Override
     public String toString() {
-        return "FollowingDTO{" +
+        return "FollowingId{" +
                 "userId='" + userId + '\'' +
                 ", followingId='" + followingId + '\'' +
                 '}';
@@ -29,9 +37,9 @@ public class FollowingDTO {
         this.followingId = followingId;
     }
 
-    public FollowingDTO(String userId, String followingId) {
+    public FollowingId(String userId, String followingId) {
         this.userId = userId;
         this.followingId = followingId;
     }
+// 생성자, Getter, Setter 생략
 }
-

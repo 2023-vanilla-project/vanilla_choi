@@ -1,38 +1,38 @@
 package com.example.vanilla.entity;
 
-import com.example.vanilla.embeddable.FollowingId;
+import com.example.vanilla.embeddable.FollowerId;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "following")
-public class Following {
+@Table(name = "follower")
+public class Follower {
 
     @EmbeddedId
-    private FollowingId id;
+    private FollowerId id;
 
-    public Following() {
+    public Follower() {
 
     }
 
     @Override
     public String toString() {
-        return "Following{" +
+        return "Follower{" +
                 "id=" + id +
                 '}';
     }
 
-    public FollowingId getId() {
+    public FollowerId getId() {
         return id;
     }
 
-    public void setId(FollowingId id) {
+    public void setId(FollowerId id) {
         this.id = id;
     }
 
-    public Following(FollowingId id) {
+    public Follower(FollowerId id) {
         this.id = id;
     }
 // 생성자, Getter, Setter 생략
