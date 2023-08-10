@@ -1,10 +1,9 @@
 package com.example.vanilla.entity;
 
 import com.example.vanilla.embeddable.FollowerId;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "follower")
@@ -12,6 +11,16 @@ public class Follower {
 
     @EmbeddedId
     private FollowerId id;
+
+    @ManyToOne
+    @MapsId("userId")
+    @JsonBackReference
+    private User user;
+
+    @ManyToOne
+    @MapsId("followerId")
+    @JsonBackReference
+    private User follower;
 
     public Follower() {
 
@@ -21,6 +30,8 @@ public class Follower {
     public String toString() {
         return "Follower{" +
                 "id=" + id +
+                ", user=" + user +
+                ", follower=" + follower +
                 '}';
     }
 
@@ -32,9 +43,26 @@ public class Follower {
         this.id = id;
     }
 
-    public Follower(FollowerId id) {
-        this.id = id;
+    public User getUser() {
+        return user;
     }
-// 생성자, Getter, Setter 생략
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getFollower() {
+        return follower;
+    }
+
+    public void setFollower(User follower) {
+        this.follower = follower;
+    }
+
+    public Follower(FollowerId id, User user, User follower) {
+        this.id = id;
+        this.user = user;
+        this.follower = follower;
+    }
 }
 

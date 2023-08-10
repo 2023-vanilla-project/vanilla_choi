@@ -60,41 +60,4 @@ public class UserService {
             throw new ResourceNotFoundException("User not found with ID: " + id);
         }
     }
-
-//    private final UserRepository userRepository;
-//    private final ModelMapper modelMapper;
-//
-//    public UserService(UserRepository userRepository, ModelMapper modelMapper) {
-//        this.userRepository = userRepository;
-//        this.modelMapper = modelMapper;
-//    }
-//
-//    public static List<User> getUsers() {
-//        return null;
-//    }
-//
-//    /* 5. 메뉴 등록 : save */
-//    @Transactional
-//    public void registNewUser(UserDTO newUser) {
-//
-//        userRepository.save(modelMapper.map(newUser, User.class));
-//
-//    }
-//
-//    @Transactional
-//    public void modifyUser(UserDTO user) throws IllegalArgumentException {
-//        List<User> userList = userRepository.findById(user.getId());
-//        if (userList.isEmpty()) {
-//            throw new NoSuchElementException("User not found with ID: " + user.getId());
-//        }
-//        User foundUser = userList.get(0);
-//        foundUser.setName(user.getName());
-//    }
-//
-//    @Transactional
-//    public void deleteUser(String id) {
-//
-//        userRepository.deleteById(id);
-//
-//    }
 }

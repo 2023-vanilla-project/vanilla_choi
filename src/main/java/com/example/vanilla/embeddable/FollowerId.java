@@ -3,22 +3,26 @@ package com.example.vanilla.embeddable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
 public class FollowerId implements Serializable {
-
     @Column(name = "user_id")
     private String userId;
-
     @Column(name = "follower_id")
     private String followerId;
 
     @Override
-    public String toString() {
-        return "FollowerId{" +
-                "userId='" + userId + '\'' +
-                ", followerId='" + followerId + '\'' +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FollowerId that = (FollowerId) o;
+        return Objects.equals(userId, that.userId) && Objects.equals(followerId, that.followerId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId, followerId);
     }
 
     public String getUserId() {
@@ -36,11 +40,5 @@ public class FollowerId implements Serializable {
     public void setFollowerId(String followerId) {
         this.followerId = followerId;
     }
-
-    public FollowerId(String userId, String followerId) {
-        this.userId = userId;
-        this.followerId = followerId;
-    }
-// 생성자, Getter, Setter 생략
 }
 

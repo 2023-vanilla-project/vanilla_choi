@@ -2,15 +2,16 @@ package com.example.vanilla.repository;
 
 import com.example.vanilla.embeddable.FollowingId;
 import com.example.vanilla.entity.Following;
+import com.example.vanilla.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface FollowingRepository extends JpaRepository<Following, FollowingId> {
+    List<Following> findByUser(User user);
 
-    // 팔로잉 목록 조회: 특정 사용자가 팔로우하는 모든 사용자 목록을 조회합니다.
-    List<Following> findAllByUserId(String userId);
+    Optional<Following> findByUserAndFollowing(User user, User following);
 
-    // 팔로잉 삭제: 특정 사용자가 특정 사용자를 언팔로우합니다.
-    void deleteByUserIdAndFollowingId(String userId, String followingId);
+    List<Following> findByFollowing(User user);
 }

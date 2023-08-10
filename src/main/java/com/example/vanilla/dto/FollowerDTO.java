@@ -1,15 +1,14 @@
 package com.example.vanilla.dto;
 
 public class FollowerDTO {
-
-    private String userId;
     private String followerId;
+    private String userId;
 
     @Override
     public String toString() {
         return "FollowerDTO{" +
-                "userId='" + userId + '\'' +
-                ", followerId='" + followerId + '\'' +
+                "followerId='" + followerId + '\'' +
+                ", userId='" + userId + '\'' +
                 '}';
     }
 
@@ -21,6 +20,11 @@ public class FollowerDTO {
         this.userId = userId;
     }
 
+    public FollowerDTO(String followerId, String userId) {
+        this.followerId = followerId;
+        this.userId = userId;
+    }
+
     public String getFollowerId() {
         return followerId;
     }
@@ -28,9 +32,10 @@ public class FollowerDTO {
     public void setFollowerId(String followerId) {
         this.followerId = followerId;
     }
-
-    public FollowerDTO(String userId, String followerId) {
-        this.userId = userId;
+    public FollowerDTO() {
+        // Default constructor
+    }
+    public FollowerDTO(String followerId) {
         this.followerId = followerId;
     }
 }
